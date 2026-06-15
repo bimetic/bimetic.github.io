@@ -182,4 +182,54 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
         });
     });
+
+    // ROI Calculator Logic
+    const viewpointsSlider = document.getElementById('roi-viewpoints');
+    const rateSlider = document.getElementById('roi-rate');
+    const viewpointsVal = document.getElementById('roi-viewpoints-val');
+    const rateVal = document.getElementById('roi-rate-val');
+    const timeResult = document.getElementById('roi-time');
+    const moneyResult = document.getElementById('roi-money');
+
+    function calculateROI() {
+        const viewpoints = parseInt(viewpointsSlider.value);
+        const hourlyRate = parseInt(rateSlider.value);
+        
+        viewpointsVal.textContent = viewpoints;
+        rateVal.textContent = hourlyRate;
+
+        // Assumptions
+        const manualSecondsPerView = 5;
+        const bimeticSecondsPerView = 0.1;
+        const subscriptionCost = 8; // monthly
+        
+        // Time in hours
+        const manualHours = (viewpoints * manualSecondsPerView) / 3600;
+        const bimeticHours = (viewpoints * bimeticSecondsPerView) / 3600;
+        
+        const hoursSaved = manualHours - bimeticHours;
+        
+        // Cost in dollars
+        const manualCost = manualHours * hourlyRate;
+        const bimeticCost = bimeticHours * hourlyRate + subscriptionCost;
+        
+        const moneySaved = manualCost - bimeticCost;
+
+        // Update UI
+        timeResult.textContent = hoursSaved.toFixed(1) + " hrs";
+        
+        if (moneySaved > 0) {
+            moneyResult.textContent = "$" + Math.round(moneySaved).toLocaleString();
+            moneyResult.style.color = "var(--success-green, #32d74b)";
+        } else {
+            moneyResult.textContent = "$" + Math.round(moneySaved).toLocaleString();
+            moneyResult.style.color = "#ff453a";
+        }
+    }
+
+    if (viewpointsSlider && rateSlider) {
+        viewpointsSlider.addEventListener('input', calculateROI);
+        rateSlider.addEventListener('input', calculateROI);
+        calculateROI(); // initial calc
+    }
 });

@@ -42,7 +42,7 @@
         <a href="https://apps.autodesk.com/" target="_blank" style="display:inline-flex; align-items:center; background:#000; color:#fff; text-decoration:none; padding:10px 20px; border-radius:6px; margin-top:24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.2s ease; border: 1px solid rgba(255,255,255,0.2); animation: fadeInUp 0.8s ease-out 0.5s both;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
             <div style="display:flex; flex-direction:column; text-align:left;">
                 <span style="font-size:11px; opacity:0.8; line-height:1; margin-bottom: 2px;">Available on the</span>
-                <span style="font-size:18px; font-weight:bold; letter-spacing:-0.5px; line-height:1;">Autodesk App Store</span>
+                <span style="font-size:18px; font-weight:bold; letter-spacing:-0.5px; line-height:1;">Autodesk Marketplace</span>
             </div>
         </a>
     </section>
@@ -92,6 +92,36 @@
         </div>
     </section>
 
+    <!-- ROI Calculator Section -->
+    <section id="roi" class="roi-section">
+        <h2 class="section-title animate-on-scroll">Calculate Your ROI</h2>
+        <p class="subtitle animate-on-scroll" style="margin-bottom: 30px;">See exactly how much time and money BIMetic saves you every month.</p>
+        
+        <div class="roi-container animate-on-scroll">
+            <div class="roi-sliders">
+                <div class="slider-group">
+                    <label for="roi-viewpoints">Viewpoints Processed per Month: <span id="roi-viewpoints-val" class="highlight-text">500</span></label>
+                    <input type="range" id="roi-viewpoints" min="50" max="5000" step="50" value="500">
+                </div>
+                <div class="slider-group">
+                    <label for="roi-rate">Your Hourly Billing Rate: $<span id="roi-rate-val" class="highlight-text">80</span>/hr</label>
+                    <input type="range" id="roi-rate" min="20" max="250" step="5" value="80">
+                </div>
+            </div>
+            <div class="roi-results">
+                <div class="roi-stat">
+                    <h4>Time Saved</h4>
+                    <div class="roi-number" id="roi-time">0.7 hrs</div>
+                </div>
+                <div class="roi-stat">
+                    <h4>Money Saved</h4>
+                    <div class="roi-number highlight" id="roi-money">$46</div>
+                    <div class="roi-disclaimer">After $8/mo subscription</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Comprehensive Pricing Section -->
     <section id="pricing" class="pricing-section">
         <h2 class="section-title animate-on-scroll">Simple, Transparent Pricing</h2>
@@ -137,16 +167,16 @@
             <!-- Enterprise Tier -->
             <div class="pricing-card animate-on-scroll">
                 <div class="pricing-tier">Enterprise</div>
-                <div class="pricing-price" style="font-size: 38px;">Volume</div>
-                <p class="pricing-desc">Flexible seat packs for entire organizations.</p>
+                <div class="pricing-price" style="font-size: 32px;">Multi-Seat</div>
+                <p class="pricing-desc">Select your seat quantity during checkout on the Autodesk Marketplace.</p>
                 
                 <ul class="pricing-features">
-                    <li>5, 10, 20, or 50+ Seat Packs</li>
-                    <li>Unlimited Network Installs</li>
+                    <li>Select any Quantity at Checkout</li>
+                    <li>Centralized Seat Assignment</li>
                     <li>MSI Silent Installer</li>
-                    <li>Priority Dedicated Support</li>
+                    <li>Contact us for 50+ Seat Promo Codes!</li>
                 </ul>
-                <a href="contact.html" class="btn-price btn-price-outline" onclick="plausible('Enterprise Tier Click')" style="text-align: center; display: block; text-decoration: none;">Contact Sales</a>
+                <a href="https://apps.autodesk.com/" class="btn-price btn-price-outline" target="_blank" onclick="plausible('Enterprise Tier Click')" style="text-align: center; display: block; text-decoration: none;">Buy on Marketplace</a>
             </div>
         </div>
     </section>
