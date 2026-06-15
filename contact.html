@@ -52,7 +52,7 @@
         <h1>Contact Sales & Support</h1>
         <p>Whether you need volume Enterprise licensing, custom development, or technical support, our team is ready to help.</p>
         
-        <form action="mailto:bimetic@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+        <form id="contactForm" class="contact-form">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" class="form-control" required placeholder="John Doe">
@@ -83,6 +83,23 @@
 
         </form>
     </main>
+
+    <script>
+        // Use Javascript to build the email cleanly, avoiding the Chrome "Insecure Form" warning
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const topic = document.getElementById('topic').value;
+            const message = document.getElementById('message').value;
+            
+            const subject = encodeURIComponent(`BIMetic Inquiry: ${topic}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}`);
+            
+            window.location.href = `mailto:bimetic@gmail.com?subject=${subject}&body=${body}`;
+        });
+    </script>
 
     <footer class="footer">
         <img src="logo.png" alt="BIMetic Logo">
