@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMetic | Contact Us</title>
+    
+    <!-- Open Graph / Social SEO Meta Tags -->
+    <meta property="og:title" content="BIMetic | Contact Us">
+    <meta property="og:description" content="Contact the BIMetic team for enterprise volume licensing or technical support.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    
+    <!-- Privacy-Friendly Analytics (Plausible) -->
+    <script defer data-domain="bimetic.com" src="https://plausible.io/js/script.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .doc-container {
+            max-width: 600px; /* Thinner for the contact form */
+            margin: 0 auto;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        .doc-container h1 {
+            font-size: 42px;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .doc-container p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="BIMetic Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><button id="theme-btn" style="background:transparent; border:none; color:var(--text-primary); cursor:pointer; font-size:18px;">🌙</button></li>
+            <li><a href="https://apps.autodesk.com/" class="btn-nav" target="_blank">Download App</a></li>
+        </ul>
+    </header>
+
+    <main class="doc-container">
+        <h1>Contact Sales & Support</h1>
+        <p>Whether you need volume Enterprise licensing, custom development, or technical support, our team is ready to help.</p>
+        
+        <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" required placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="john@yourcompany.com">
+            </div>
+
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <select id="topic" name="topic" class="form-control" required>
+                    <option value="" disabled selected>Select an option...</option>
+                    <option value="Enterprise Sales">Enterprise Sales (Volume Seat Packs)</option>
+                    <option value="Technical Support">Technical Support & Bug Reports</option>
+                    <option value="Feature Request">Feature Request</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" class="form-control" required placeholder="How can we help you?"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-price btn-price-primary">Send Message</button>
+
+            <!-- IMPORTANT: Replace YOUR_FORM_ID_HERE in the form action with your actual Formspree endpoint ID -->
+            <p style="font-size: 12px; color: #ff453a; margin-top: 20px;">
+                Note to admin: Please replace <code>YOUR_FORM_ID_HERE</code> in the HTML form action with your free Formspree endpoint URL before deploying.
+            </p>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <img src="logo.png" alt="BIMetic Logo">
+        <div>
+            <a href="help.html">Help & Docs</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="eula.html">EULA</a>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">&copy; 2026 BIMetic. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

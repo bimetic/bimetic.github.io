@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMetic | Privacy Policy</title>
+    
+    <!-- Open Graph / Social SEO Meta Tags -->
+    <meta property="og:title" content="BIMetic | Privacy Policy">
+    <meta property="og:description" content="Privacy policy outlining our commitment to local data processing and offline security.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    
+    <!-- Privacy-Friendly Analytics (Plausible) -->
+    <script defer data-domain="bimetic.com" src="https://plausible.io/js/script.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .doc-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        .doc-container h1 {
+            font-size: 42px;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .doc-container h2 {
+            font-size: 24px;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .doc-container p, .doc-container li {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .doc-container ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="BIMetic Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><button id="theme-btn" style="background:transparent; border:none; color:var(--text-primary); cursor:pointer; font-size:18px;">🌙</button></li>
+            <li><a href="https://apps.autodesk.com/" class="btn-nav" target="_blank">Download App</a></li>
+        </ul>
+    </header>
+
+    <main class="doc-container">
+        <h1>Privacy Policy for BIMetic Saved Viewpoints Manager</h1>
+        <p>BIMetic ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by BIMetic.</p>
+        <p>This Privacy Policy applies to our application, BIMetic Saved Viewpoints Manager, and its associated services. By accessing or using our Service, you signify that you have read, understood, and agree to our collection, storage, use, and disclosure of your personal information as described in this Privacy Policy.</p>
+        
+        <h2>Information We Collect</h2>
+        <p>Our application functions primarily locally on your desktop within the Autodesk Navisworks environment. However, to provide licensing and software updates, we may collect:</p>
+        <ol>
+            <li><strong>Authentication Data:</strong> When you log into Autodesk Navisworks, our plugin uses the Autodesk Entitlement API to verify your license. We only access your unique, anonymized Autodesk User ID to send a secure verification request to Autodesk's servers.</li>
+            <li><strong>Local Snapshots:</strong> The plugin's Backup & Restore feature saves JSON snapshots of your viewpoints structure locally on your machine at <code>%LOCALAPPDATA%\BIMeticWebView2\Backups</code>. We do NOT have access to these files.</li>
+            <li><strong>Usage Telemetry (Optional):</strong> If enabled, we may collect anonymous, non-identifying telemetry (such as the total number of viewpoints processed) to help us improve the software's performance.</li>
+        </ol>
+        <p>We <strong>DO NOT</strong> collect, store, or transmit your actual Navisworks 3D models, proprietary clash data, or viewpoint contents to our servers.</p>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Verify your subscription and entitlement to use the software via the Autodesk App Store.</li>
+            <li>Provide, operate, and maintain our application.</li>
+            <li>Improve, personalize, and expand our application based on usage trends.</li>
+            <li>Understand and analyze how you use our application to fix bugs.</li>
+        </ul>
+
+        <h2>Security of Your Information</h2>
+        <p>We take the security of your data very seriously. Because our application operates primarily offline within your local desktop environment, your proprietary engineering and BIM data never leaves your machine.</p>
+
+        <h2>Changes to This Privacy Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page or through the Autodesk App Store update notes.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us via our Support page:</p>
+        <p><a href="contact.html" style="color: var(--primary-blue);">Contact Support</a></p>
+
+    </main>
+
+    <footer class="footer">
+        <img src="logo.png" alt="BIMetic Logo">
+        <div>
+            <a href="contact.html">Contact Support</a>
+            <a href="help.html">Help & Docs</a>
+            <a href="eula.html">EULA</a>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">&copy; 2026 BIMetic. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

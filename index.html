@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMetic | Saved Viewpoints Manager</title>
+    
+    <!-- Open Graph / Social SEO Meta Tags -->
+    <meta property="og:title" content="BIMetic | Saved Viewpoints Manager for Navisworks">
+    <meta property="og:description" content="Premium, high-performance plugin to bulk-format, auto-count, and intelligently classify duplicate viewpoints in massive Navisworks federated models.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BIMetic | Saved Viewpoints Manager">
+    <meta name="twitter:description" content="Bring order to your federated models with our ultra-premium automation engine.">
+    <meta name="twitter:image" content="logo.png">
+    
+    <!-- Privacy-Friendly Analytics (Plausible) -->
+    <script defer data-domain="bimetic.com" src="https://plausible.io/js/script.js"></script>
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+    <header class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="BIMetic Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="help.html">Help & Docs</a></li>
+            <li><button id="theme-btn" style="background:transparent; border:none; color:var(--text-primary); cursor:pointer; font-size:18px;">🌙</button></li>
+            <li><a href="https://apps.autodesk.com/" class="btn-nav" target="_blank">Download App</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <div class="badge">BIMETIC SAVED VIEWPOINTS MANAGER</div>
+        <h1>Bring Order to Your <br><span class="highlight">Federated Models</span></h1>
+        <p class="subtitle">Bulk-format viewpoints, auto-count folders, and run mathematical duplicate classification (Experimental).</p>
+        <a href="https://apps.autodesk.com/" target="_blank" style="display:inline-flex; align-items:center; background:#000; color:#fff; text-decoration:none; padding:10px 20px; border-radius:6px; margin-top:24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.2s ease; border: 1px solid rgba(255,255,255,0.2); animation: fadeInUp 0.8s ease-out 0.5s both;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div style="display:flex; flex-direction:column; text-align:left;">
+                <span style="font-size:11px; opacity:0.8; line-height:1; margin-bottom: 2px;">Available on the</span>
+                <span style="font-size:18px; font-weight:bold; letter-spacing:-0.5px; line-height:1;">Autodesk App Store</span>
+            </div>
+        </a>
+    </section>
+
+    <!-- Sleek Terminal Demo Animation -->
+    <div class="demo-container">
+        <div class="demo-card">
+            <div class="demo-inner">
+                <div class="demo-header">
+                    <div class="demo-controls">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="demo-title">BIMETIC.EXE</div>
+                    <div style="width: 48px;"></div> <!-- Spacer -->
+                </div>
+                
+                <div class="demo-animation" id="demo-terminal" style="height: 380px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Markup Features Section -->
+    <section id="features" class="features-section">
+        <h2 class="section-title animate-on-scroll">Premium Coordination Tools</h2>
+        <div class="features-grid">
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">✨</div>
+                <h3>Bulk Formatting</h3>
+                <p>Standardize your entire Navisworks viewpoint structure in seconds with highly customizable presets, custom prefixes, and rule sets.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🔢</div>
+                <h3>Auto-Counting Engine</h3>
+                <p>Instantly count and enumerate views per folder to keep massive federated models perfectly organized. E.g., "Architecture (42)".</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🖍️</div>
+                <h3>Markup Detection</h3>
+                <p>Automatically scan your viewpoints to identify and flag views that contain active redline markups, ensuring nothing gets missed.</p>
+            </div>
+            <div class="feature-card animate-on-scroll">
+                <div class="feature-icon">🔍</div>
+                <h3>Duplicate Detection <span style="font-size: 10px; background: rgba(10, 132, 255, 0.2); color: var(--primary-blue); padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 6px; letter-spacing: 0.5px;">BETA</span></h3>
+                <p>Automatically scan entire folder trees to identify and classify duplicate viewpoints based on precise camera coordinates and vectors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <h2 class="section-title animate-on-scroll">Simple, Transparent Pricing</h2>
+        
+        <div class="pricing-toggle animate-on-scroll">
+            <div class="toggle-bg">
+                <button class="toggle-btn" id="btn-monthly">Monthly</button>
+                <button class="toggle-btn active" id="btn-annual">Annually (Save 20%)</button>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Basic Tier -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-tier">Starter</div>
+                <div class="pricing-price" id="price-starter">$0<span>/mo</span></div>
+                <p class="pricing-desc">Perfect for evaluating the tool on a single machine.</p>
+                
+                <ul class="pricing-features">
+                    <li>14-Day Free Trial</li>
+                    <li>Basic Bulk Formatting</li>
+                    <li>Community Support</li>
+                </ul>
+                <a href="https://apps.autodesk.com/" class="btn-price btn-price-outline" target="_blank" onclick="plausible('Starter Tier Click')" style="text-align: center; display: block; text-decoration: none;">Start Free Trial</a>
+            </div>
+
+            <!-- Pro Tier (Popular) -->
+            <div class="pricing-card popular animate-on-scroll">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="pricing-tier">Professional</div>
+                <div class="pricing-price" id="price-pro">$8<span>/mo</span></div>
+                <p class="pricing-desc">Everything you need for serious BIM coordination.</p>
+                
+                <ul class="pricing-features">
+                    <li>All Advanced Features</li>
+                    <li>Duplicate View Detection</li>
+                    <li>Auto-Counting Engine</li>
+                    <li>Email Support</li>
+                </ul>
+                <a href="https://apps.autodesk.com/" class="btn-price btn-price-primary" target="_blank" onclick="plausible('Professional Tier Click')" style="text-align: center; display: block; text-decoration: none;">Get Professional</a>
+            </div>
+
+            <!-- Enterprise Tier -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-tier">Enterprise</div>
+                <div class="pricing-price" style="font-size: 38px;">Volume</div>
+                <p class="pricing-desc">Flexible seat packs for entire organizations.</p>
+                
+                <ul class="pricing-features">
+                    <li>5, 10, 20, or 50+ Seat Packs</li>
+                    <li>Unlimited Network Installs</li>
+                    <li>MSI Silent Installer</li>
+                    <li>Priority Dedicated Support</li>
+                </ul>
+                <a href="contact.html" class="btn-price btn-price-outline" onclick="plausible('Enterprise Tier Click')" style="text-align: center; display: block; text-decoration: none;">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <img src="logo.png" alt="BIMetic Logo">
+        <div>
+            <a href="contact.html">Contact Support</a>
+            <a href="help.html">Help & Docs</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="eula.html">EULA</a>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">&copy; 2026 BIMetic. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

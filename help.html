@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMetic | Help & Documentation</title>
+    
+    <!-- Open Graph / Social SEO Meta Tags -->
+    <meta property="og:title" content="BIMetic | Help & Documentation">
+    <meta property="og:description" content="Official documentation for installing and using the BIMetic Saved Viewpoints Manager.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    
+    <!-- Privacy-Friendly Analytics (Plausible) -->
+    <script defer data-domain="bimetic.com" src="https://plausible.io/js/script.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .doc-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        .doc-container h1 {
+            font-size: 42px;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        .doc-container h2 {
+            font-size: 28px;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .doc-container h3 {
+            font-size: 20px;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .doc-container p, .doc-container li {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .doc-container ul, .doc-container ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .warning-box {
+            background: rgba(255, 69, 58, 0.1);
+            border-left: 4px solid #ff453a;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .warning-box p {
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="BIMetic Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><button id="theme-btn" style="background:transparent; border:none; color:var(--text-primary); cursor:pointer; font-size:18px;">🌙</button></li>
+            <li><a href="https://apps.autodesk.com/" class="btn-nav" target="_blank">Download App</a></li>
+        </ul>
+    </header>
+
+    <main class="doc-container">
+        <h1>Help & Documentation</h1>
+        <p>Welcome to the official documentation for the BIMetic Saved Viewpoints Manager for Autodesk Navisworks. This guide covers installation, usage, and uninstallation.</p>
+        
+        <h2>1. Installation and Uninstallation</h2>
+        <h3>How to Install</h3>
+        <ol>
+            <li>Download the `.msi` installer package from the Autodesk App Store.</li>
+            <li>Make sure Autodesk Navisworks is completely closed.</li>
+            <li>Double-click the installer and follow the on-screen prompts.</li>
+            <li>Launch Navisworks. The BIMetic tool will appear in the "Add-ins" or "Tool Add-ins" ribbon tab.</li>
+        </ol>
+
+        <h3>How to Uninstall</h3>
+        <ol>
+            <li>Close Autodesk Navisworks.</li>
+            <li>Open the Windows <strong>Control Panel</strong> and navigate to <strong>Programs and Features</strong>.</li>
+            <li>Locate "BIMetic Saved Viewpoints Manager" in the list of installed programs.</li>
+            <li>Click <strong>Uninstall</strong> and follow the prompts to safely remove the plugin.</li>
+        </ol>
+
+        <h2>2. General Usage Instructions</h2>
+        <p>Click the "BIMetic Manager" icon in your Navisworks ribbon to open the Cloud-App interface. From there, you can utilize the following features:</p>
+
+        <h3>Bulk Formatting & Auto-Counting</h3>
+        <p>Select the folders you wish to process from the tree view. You can choose a starting ID (e.g., 001) and apply multiple path formats. The engine can intelligently append the total view count to folder titles recursively (e.g., "Architecture (42)").</p>
+
+        <h3>Backup & Restore Snapshot Engine</h3>
+        <p>Before executing any bulk formatting, the plugin automatically creates a local JSON snapshot of your entire viewpoint tree. If you make a mistake, simply navigate to the <strong>Restore</strong> tab, select the latest snapshot timestamp, and instantly revert your changes without losing clash data.</p>
+
+        <h3>Duplicate Detection <span style="font-size: 10px; background: rgba(10, 132, 255, 0.2); color: var(--primary-blue); padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 6px;">BETA</span></h3>
+        <p>The Duplicate Detector scans your selected folders and mathematically analyzes the 3D Euclidean distances between camera target positions, quaternion rotations, and markup counts. It intelligently classifies viewpoints into three categories:</p>
+        <ul>
+            <li><code>TRUE_DUPLICATE</code>: Identical camera coordinates and markup data. Recommended for cleanup.</li>
+            <li><code>INTENTIONAL_SEQUENCE</code>: Similar target but different camera distance/angle. Safe to keep.</li>
+            <li><code>REUSED_VIEWPOINT</code>: Clean, non-duplicate views.</li>
+        </ul>
+        <div class="warning-box">
+            <p><strong>⚠️ Warning: Experimental Feature</strong><br>The Duplicate Detector is currently in Beta. Because it relies on mathematical heuristics, it may occasionally flag intentional views as duplicates. Always use the built-in Backup & Restore snapshot engine before running a bulk cleanup operation.</p>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <img src="logo.png" alt="BIMetic Logo">
+        <div>
+            <a href="contact.html">Contact Support</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="eula.html">EULA</a>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 20px;">&copy; 2026 BIMetic. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
