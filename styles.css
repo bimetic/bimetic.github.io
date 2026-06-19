@@ -4,44 +4,46 @@
 */
 
 :root {
-    --bg-main: #08080a; /* Deepest black for background */
-    --bg-card: rgba(28, 28, 30, 0.7); /* Apple-like translucent grey */
-    --bg-card-hover: rgba(44, 44, 46, 0.9);
+    --bg-main: #f5f5f5; /* Light mode default matching plugin UI */
+    --bg-card: #ffffff; /* White cards matching plugin UI */
+    --bg-card-hover: #fafafa;
     
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1a6;
-    --text-muted: #636366;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
     
-    --primary-blue: #0a84ff;
-    --primary-blue-hover: #0070e0;
-    --primary-glow: rgba(10, 132, 255, 0.4);
+    --primary-blue: #0078D7;
+    --primary-blue-hover: #005a9e;
+    --primary-glow: rgba(0, 120, 215, 0.2);
     
-    --success-green: #30d158;
+    --success-green: #107c10;
     
-    --border-color: rgba(255, 255, 255, 0.1);
-    --border-highlight: rgba(10, 132, 255, 0.5);
+    --border-color: #e1e1e1;
+    --border-highlight: rgba(0, 120, 215, 0.5);
     
-    --nav-bg: rgba(8, 8, 10, 0.8);
-    --footer-bg: rgba(0, 0, 0, 0.5);
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --footer-bg: #ffffff;
     
-    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition-smooth: all 0.2s ease;
 }
 
-[data-theme="light"] {
-    --bg-main: #f8fafc;
-    --bg-card: rgba(255, 255, 255, 0.8);
-    --bg-card-hover: rgba(255, 255, 255, 1);
+[data-theme="dark"] {
+    --bg-main: #202020;
+    --bg-card: #2d2d2d;
+    --bg-card-hover: #333333;
     
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #999999;
     
-    --border-color: rgba(0, 0, 0, 0.1);
-    --border-highlight: rgba(10, 132, 255, 0.5);
+    --border-color: #444444;
+    --border-highlight: rgba(0, 120, 215, 0.5);
     
-    --nav-bg: rgba(255, 255, 255, 0.9);
-    --footer-bg: rgba(0, 0, 0, 0.03);
+    --nav-bg: rgba(32, 32, 32, 0.95);
+    --footer-bg: #2d2d2d;
 }
+
+/* Removed old light theme override since light is now default */
 
 [data-theme="light"] .logo img,
 [data-theme="light"] .footer img {
@@ -63,12 +65,9 @@ body {
     line-height: 1.5;
     overflow-x: hidden;
     
-    /* Premium glow background */
-    background-image: 
-        radial-gradient(circle at 15% 0%, rgba(10, 132, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 85% 80%, rgba(10, 132, 255, 0.08) 0%, transparent 40%);
-    background-attachment: fixed;
-    transition: background-color 0.4s ease, color 0.4s ease;
+    /* Premium clean background */
+    background-image: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 h1, h2, h3 {
@@ -136,13 +135,56 @@ h1, h2, h3 {
     background: var(--primary-blue);
     color: white !important;
     padding: 8px 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px var(--primary-glow);
+    border-radius: 20px; /* Pill shape */
+    box-shadow: 0 4px 10px var(--primary-glow);
 }
 
 .btn-nav:hover {
     background: var(--primary-blue-hover);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+}
+
+/* Hamburger Menu CSS */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: var(--transition-smooth);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: var(--nav-bg);
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+    }
 }
 
 /* Header Section */
@@ -304,75 +346,61 @@ h1, h2, h3 {
 /* Features Section */
 .features-section {
     padding: 2rem 5% 6rem;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .section-title {
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 4rem;
+    font-size: 32px;
+    margin-bottom: 3rem;
+    font-weight: 600;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
 }
 
 .feature-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 32px;
-    transition: transform 0.1s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out, background 0.3s ease-out;
-    position: relative;
-    z-index: 1;
-}
-
-.feature-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(10, 132, 255, 0.08), transparent 40%);
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.feature-card:hover::before {
-    opacity: 1;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .feature-card:hover {
-    border-color: var(--border-highlight);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    background: var(--bg-card-hover);
+    border-color: var(--primary-blue);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
 }
 
 .feature-icon {
-    font-size: 32px;
-    margin-bottom: 20px;
-    background: rgba(10, 132, 255, 0.1);
-    width: 60px;
-    height: 60px;
+    font-size: 28px;
+    margin-bottom: 16px;
+    background: rgba(0, 120, 215, 0.1);
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 50%;
     color: var(--primary-blue);
 }
 
 .feature-card h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .feature-card p {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 /* ROI Calculator */
@@ -385,12 +413,12 @@ h1, h2, h3 {
 .roi-container {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .roi-sliders {

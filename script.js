@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Hamburger Menu Toggle Logic
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
+
     // Theme Toggle Logic
     const themeBtn = document.getElementById('theme-btn');
     
@@ -192,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const moneyResult = document.getElementById('roi-money');
 
     function calculateROI() {
+        if (!viewpointsSlider || !rateSlider) return;
+        
         const viewpoints = parseInt(viewpointsSlider.value);
         const hourlyRate = parseInt(rateSlider.value);
         
@@ -199,9 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
         rateVal.textContent = hourlyRate;
 
         // Assumptions
-        const manualSecondsPerView = 5;
+        // Manual renaming and organizing takes about 25 seconds per view (navigating tree, renaming, finding duplicates, etc.)
+        // BIMetic takes ~0.1 sec per view
+        const manualSecondsPerView = 25;
         const bimeticSecondsPerView = 0.1;
-        const subscriptionCost = 8; // monthly
+        const subscriptionCost = 8; // monthly cost
         
         // Time in hours
         const manualHours = (viewpoints * manualSecondsPerView) / 3600;
@@ -220,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (moneySaved > 0) {
             moneyResult.textContent = "$" + Math.round(moneySaved).toLocaleString();
-            moneyResult.style.color = "var(--success-green, #32d74b)";
+            moneyResult.style.color = "var(--success-green, #107c10)";
         } else {
             moneyResult.textContent = "$" + Math.round(moneySaved).toLocaleString();
             moneyResult.style.color = "#ff453a";
