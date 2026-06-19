@@ -45,8 +45,7 @@
 
 [data-theme="light"] .logo img,
 [data-theme="light"] .footer img {
-    /* If the logo has white text, we invert its brightness in light mode to make it dark */
-    filter: brightness(0.1); 
+    /* Logo already has dark text, no need to invert brightness which ruins the blue gradient */
 }
 
 * {
