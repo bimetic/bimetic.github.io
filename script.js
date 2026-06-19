@@ -11,13 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme Toggle Logic
     const themeBtn = document.getElementById('theme-btn');
-    
+    const moonSVG = `<svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    const sunSVG = `<svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
     // 1. Load saved theme immediately
     const savedTheme = localStorage.getItem('bimetic-theme');
     if (savedTheme) {
         document.body.setAttribute('data-theme', savedTheme);
         if (themeBtn) {
-            themeBtn.innerText = savedTheme === 'light' ? '🌙' : '☀️';
+            themeBtn.innerHTML = savedTheme === 'light' ? moonSVG : sunSVG;
         }
     }
 
@@ -27,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
             if (body.getAttribute('data-theme') === 'light') {
                 body.setAttribute('data-theme', 'dark');
-                themeBtn.innerText = '☀️';
+                themeBtn.innerHTML = sunSVG;
                 localStorage.setItem('bimetic-theme', 'dark');
             } else {
                 body.setAttribute('data-theme', 'light');
-                themeBtn.innerText = '🌙';
+                themeBtn.innerHTML = moonSVG;
                 localStorage.setItem('bimetic-theme', 'light');
             }
         });
@@ -127,10 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 15; i++) {
             let num = i.toString().padStart(3, '0');
             addTerminalLine(`
-                <div style="display: flex; align-items: center; padding: 2px 0; font-size: 13px;">
-                    <div style="width: 35%; color: var(--text-muted); text-decoration: line-through;">Arch_Clash_${num}</div>
-                    <div style="width: 10%; color: var(--primary-blue); text-align: center;">→</div>
-                    <div style="width: 55%; color: #fff; font-weight: bold;">${num} - Arch_Clash_${num}</div>
+                <div class="demo-line" style="border: none; padding: 2px 0; font-size: 13px; margin: 0;">
+                    <div class="demo-old">Arch_Clash_${num}</div>
+                    <div class="demo-arrow">→</div>
+                    <div class="demo-new">${num} - Arch_Clash_${num}</div>
                 </div>
             `);
             await sleep(30); // Super fast split-second delay
