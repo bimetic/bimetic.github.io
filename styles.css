@@ -92,26 +92,25 @@ h1, h2, h3 {
 .logo {
     position: relative;
     z-index: 1;
-    padding: 6px 14px;
+    padding: 8px 16px;
     border-radius: 12px;
     display: inline-flex;
     align-items: center;
-    background-color: transparent;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 120, 215, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0, 120, 215, 0.6);
 }
 
 .logo img {
-    height: 40px;
+    height: 35px;
     object-fit: contain;
     display: block;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 120, 215, 0.4);
-}
-
-/* Clean white container for dark logo in Dark Mode */
-[data-theme="dark"] .logo {
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 0 25px rgba(0, 120, 215, 0.5);
+    mix-blend-mode: darken; /* This merges the image's white background with the container */
 }
 
 .nav-links {
