@@ -856,3 +856,94 @@ input[type=range]::-webkit-slider-runnable-track {
 .docs-section ul {
     margin-left: 20px;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Navbar & Hamburger */
+    .hamburger {
+        display: flex;
+        cursor: pointer;
+        z-index: 1000;
+    }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 6rem 5% 4rem;
+    }
+    .hero-title {
+        font-size: 38px;
+    }
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    /* Live Preview Dashboard */
+    .demo-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .demo-header button {
+        width: 100%;
+        margin-top: 10px !important;
+    }
+    .config-toggle {
+        width: 100%;
+    }
+    .demo-new {
+        font-size: 12px;
+    }
+    .demo-old {
+        font-size: 12px;
+    }
+    
+    /* Pricing */
+    .pricing-toggle {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-card {
+        margin-bottom: 24px;
+    }
+    
+    /* ROI */
+    .roi-container {
+        flex-direction: column;
+    }
+    .roi-sliders {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+    
+    /* Footer */
+    .footer div {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .footer a {
+        margin: 0;
+    }
+}
+

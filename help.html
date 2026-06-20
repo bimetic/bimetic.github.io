@@ -52,16 +52,48 @@
         <p class="animate-on-scroll" style="color: var(--text-secondary); font-size: 16px; margin-bottom: 3rem; line-height: 1.6;">Welcome to the official documentation for the BIMetic Saved Viewpoints Manager for Autodesk Navisworks. This guide covers installation, authentication, and usage of the core pipeline features.</p>
         
         <div class="docs-section animate-on-scroll">
-            <h2>1. Installation and Authentication</h2>
+            <h2>1. Installation and Uninstallation</h2>
             <h3>How to Install</h3>
             <ol>
                 <li>Download the `.bundle` or `.msi` installer package from the Autodesk App Store.</li>
                 <li>Make sure Autodesk Navisworks is completely closed.</li>
                 <li>Run the installer and follow the on-screen prompts.</li>
-                <li>Launch Navisworks. The BIMetic tool will appear in the "Add-ins" or "Tool Add-ins" ribbon tab.</li>
+                <li>Launch Navisworks. You will find the new "BIMetic" tab in the Ribbon.</li>
             </ol>
+            
+            <h3>How to Uninstall</h3>
+            <ol>
+                <li>Close Autodesk Navisworks.</li>
+                <li>Go to Windows Settings > Apps &amp; Features (or Control Panel > Programs and Features).</li>
+                <li>Find "BIMetic Saved Viewpoints Manager" in the list and click "Uninstall".</li>
+                <li>Alternatively, if installed via the `.bundle`, delete the `BIMeticPlugin.bundle` folder from `%ProgramData%\Autodesk\ApplicationPlugins`.</li>
+            </ol>
+        </div>
 
-            <h3>Autodesk Authentication</h3>
+        <div class="docs-section animate-on-scroll">
+            <h2>2. General Usage Instructions &amp; Commands</h2>
+            <p>Once installed, navigating the plugin is incredibly simple. The plugin adds a single dedicated tab to your Navisworks Ribbon.</p>
+            
+            <h3>Available Commands</h3>
+            <ul>
+                <li><strong>Command Name:</strong> Saved Viewpoints Manager</li>
+                <li><strong>Location:</strong> BIMetic Tab > BIMetic Panel</li>
+                <li><strong>Description:</strong> Opens the main BIMetic Cloud Dashboard. This is the primary interface where you configure formatting rules, detect duplicates, manage markups, and restore backups.</li>
+            </ul>
+
+            <h3>Basic Workflow</h3>
+            <ol>
+                <li>Click the "Saved Viewpoints Manager" button in the BIMetic ribbon tab.</li>
+                <li>Log in securely using your Autodesk Account credentials.</li>
+                <li>The dashboard will automatically sync with your active Navisworks document and load your Viewpoints Tree.</li>
+                <li>Select the folders or viewpoints you wish to modify.</li>
+                <li>Configure your pipeline modules (e.g., Data Sanitizer, Prefix Folder Index, etc.).</li>
+                <li>Click <strong>Run Formatter Pipeline</strong> to instantly apply changes to your Navisworks model.</li>
+            </ol>
+        </div>
+
+        <div class="docs-section animate-on-scroll">
+            <h2>3. Autodesk Authentication</h2>
             <p>Our plugin is secured using the official Autodesk App Store Entitlement API. When you click the Ribbon button, the C# engine checks your current logged-in Autodesk ID against the App Store.</p>
             <div class="warning-box">
                 <p><strong>Note:</strong> You must be signed into Navisworks with the exact Autodesk ID used to purchase the subscription, or you will receive a "License Required" error.</p>
@@ -69,7 +101,7 @@
         </div>
 
         <div class="docs-section animate-on-scroll">
-            <h2>2. Pipeline Formatter</h2>
+            <h2>4. Pipeline Formatter</h2>
             <p>The core feature of BIMetic is the bulk formatting pipeline. You can access this via the "Pipeline Formatter" tab.</p>
 
             <h3>Target Scope Selection</h3>
@@ -85,7 +117,7 @@
         </div>
 
         <div class="docs-section animate-on-scroll">
-            <h2>3. Markup Tracker</h2>
+            <h2>5. Markup Tracker</h2>
             <p>Go to the "Viewpoint Markups" tab to analyze your model for active redlines.</p>
             <ul>
                 <li>The engine scans every viewpoint in your scope for hidden Redline data.</li>
@@ -105,13 +137,29 @@
         </div>
 
         <div class="docs-section animate-on-scroll">
-            <h2>5. Auto-Backup & Restore</h2>
+            <h2>6. Auto-Backup & Restore</h2>
             <p>We built an infallible safety net into the plugin. Before <em>any</em> operation executes, the C# engine silently captures an XML snapshot of your entire Saved Viewpoints tree.</p>
             <ul>
                 <li>If you make a mistake, click the <strong>Restore Pipeline</strong> tab.</li>
                 <li>Select the exact timestamp of the backup.</li>
                 <li>Choose whether to restore just Viewpoint Names, or the full Folder structure.</li>
                 <li>The plugin will instantly roll back the Navisworks tree.</li>
+            </ul>
+        </div>
+
+        <div class="docs-section animate-on-scroll">
+            <h2>7. System Requirements &amp; Known Issues</h2>
+            <h3>System Requirements</h3>
+            <ul>
+                <li>Autodesk Navisworks Manage or Simulate (2020, 2021, 2022, 2023, 2024, or 2025).</li>
+                <li>Windows 10 or Windows 11 (64-bit).</li>
+                <li>An active internet connection is required to authenticate with Autodesk Single Sign-On and load the Cloud Dashboard.</li>
+            </ul>
+            
+            <h3>Known Issues</h3>
+            <ul>
+                <li>When running large bulk formatting pipelines on highly complex models with thousands of viewpoints, the Navisworks UI may briefly pause for 1-2 seconds while the XML tree is re-rendered.</li>
+                <li>Occasionally, the Autodesk SSO login token may expire if left idle for several days. Simply close and reopen the plugin to refresh the token.</li>
             </ul>
         </div>
 
