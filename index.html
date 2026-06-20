@@ -58,19 +58,47 @@
         </a>
     </section>
 
-    <!-- Sleek Terminal Demo Animation -->
+    <!-- Interactive Live Preview Component -->
     <div class="demo-container">
         <div class="demo-card">
-            <div class="demo-inner">
-                <div class="demo-header">
-                    <div class="demo-controls">
-                        <span></span><span></span><span></span>
+            <div class="demo-inner" style="position: relative;">
+                <div class="demo-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 24px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <span style="font-weight: 700; color: var(--text-primary); font-size: 18px; letter-spacing: 0.5px;">Pipeline Dashboard</span>
                     </div>
-                    <div class="demo-title">BIMETIC.EXE</div>
-                    <div style="width: 48px;"></div> <!-- Spacer -->
+                    <button class="btn-hero pulse-anim" id="btnRunDemo" style="margin-top: 0; padding: 10px 24px; font-size: 14px; font-weight: 700; border-radius: 8px;">Run Formatter pipeline</button>
                 </div>
                 
-                <div class="demo-animation" id="demo-terminal" style="height: 380px; display: flex; flex-direction: column; justify-content: flex-start; overflow: hidden;">
+                <!-- Mock Plugin Configuration -->
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 24px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);">
+                    <h4 style="font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Configuration Modules</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                        <label class="config-toggle">
+                            <input type="checkbox" checked disabled> 
+                            <span class="toggle-track"></span>
+                            Prefix Folder Index
+                        </label>
+                        <label class="config-toggle">
+                            <input type="checkbox" checked disabled> 
+                            <span class="toggle-track"></span>
+                            Append Today's Date
+                        </label>
+                        <label class="config-toggle">
+                            <input type="checkbox" checked disabled> 
+                            <span class="toggle-track"></span>
+                            Detect Markups
+                        </label>
+                        <label class="config-toggle">
+                            <input type="checkbox" checked disabled> 
+                            <span class="toggle-track"></span>
+                            Map "Clash" -> "Issue"
+                        </label>
+                    </div>
+                </div>
+
+                <h4 style="font-size: 12px; color: var(--text-secondary); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700;">Navisworks Live Viewpoints Tree</h4>
+                <div class="demo-live-preview" id="demo-preview-list">
+                    <!-- JavaScript will populate this -->
                 </div>
             </div>
         </div>
@@ -98,7 +126,7 @@
                 <div class="feature-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
-                <h3>Duplicates Detector <span style="font-size: 10px; background: rgba(0, 120, 215, 0.2); color: var(--primary-blue); padding: 2px 6px; border-radius: 4px; vertical-align: middle; margin-left: 6px; letter-spacing: 0.5px;">BETA</span></h3>
+                <h3>Duplicates Detector</h3>
                 <p>Automatically scan entire folder trees to identify duplicate viewpoints based on identical 3D camera coordinates and vectors.</p>
             </div>
             <div class="feature-card animate-on-scroll">
@@ -201,7 +229,7 @@
     </section>
 
     <footer class="footer">
-        <div class="logo" style="margin-bottom: 20px;">
+        <div class="logo-preview" style="display: inline-flex; margin-bottom: 20px;">
             <img src="logo_full.png" alt="BIMetic Logo">
         </div>
         <div>

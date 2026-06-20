@@ -92,80 +92,83 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Advanced Terminal Demo Animation Logic
-    const terminal = document.getElementById('demo-terminal');
-    
-    function addTerminalLine(htmlContent) {
-        if (!terminal) return null;
-        const div = document.createElement('div');
-        div.style.marginBottom = '8px';
-        div.innerHTML = htmlContent;
-        terminal.appendChild(div);
-        
-        // Keep only last 13 lines to prevent overflow
-        while (terminal.childNodes.length > 13) {
-            terminal.removeChild(terminal.firstChild);
-        }
-        return div;
-    }
+    // Live Preview Dashboard Mock Logic
+    const demoPreviewList = document.getElementById('demo-preview-list');
+    const btnRunDemo = document.getElementById('btnRunDemo');
 
-    async function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    const mockViewpoints = [
+        { oldName: "Arch_Clash_001", hasMarkup: false },
+        { oldName: "MEP_Coordination_Zone2", hasMarkup: true },
+        { oldName: "Stairs_Level4_RFI", hasMarkup: false },
+        { oldName: "Structural_Steel_Grid_A", hasMarkup: false },
+        { oldName: "View_From_Lobby", hasMarkup: false },
+        { oldName: "Exterior_Facade_Detail", hasMarkup: true },
+        { oldName: "HVAC_Duct_Conflict", hasMarkup: false },
+        { oldName: "Plumbing_Riser_03", hasMarkup: false }
+    ];
 
-    async function runAdvancedDemoLoop() {
-        if (!terminal) return;
-        terminal.innerHTML = "";
+    function renderMockList(formatted = false) {
+        if (!demoPreviewList) return;
+        demoPreviewList.innerHTML = '';
         
-        // INIT
-        addTerminalLine(`<span style="color: var(--primary-blue); font-weight: bold;">> Running BIMetic Viewpoint Pipeline...</span>`);
-        await sleep(1000);
+        const dateStr = new Date().toISOString().slice(0, 10);
         
-        // PHASE 1: FORMATTING
-        addTerminalLine(`<span style="color: var(--text-secondary);">[1/3] Bulk Formatter: Renaming 1,482 views...</span>`);
-        await sleep(400);
-        
-        // Simulate rapid processing of hundreds of files
-        for (let i = 1; i <= 15; i++) {
-            let num = i.toString().padStart(3, '0');
-            addTerminalLine(`
-                <div class="demo-line" style="border: none; padding: 2px 0; font-size: 13px; margin: 0;">
-                    <div class="demo-old">Arch_Clash_${num}</div>
-                    <div class="demo-arrow">→</div>
-                    <div class="demo-new">${num} - Arch_Clash_${num}</div>
+        mockViewpoints.forEach((vp, index) => {
+            const folderPrefix = `0${index + 1}`;
+            
+            // Map "Clash" to "Issue" as a mock feature
+            let processedName = vp.oldName.replace("Clash", "Issue");
+            
+            // Append markup tag if it has it
+            if (formatted && vp.hasMarkup) {
+                processedName = `[HAS_MARKUPS] ${processedName}`;
+            }
+            
+            const newName = formatted ? `${folderPrefix} - ${processedName} - ${dateStr}` : vp.oldName;
+            
+            const div = document.createElement('div');
+            div.className = 'demo-viewpoint-item';
+            div.style.animation = formatted ? `slideInRight 0.4s ease-out ${index * 0.05}s both` : 'none';
+            
+            div.innerHTML = `
+                <div class="demo-old" style="${formatted ? 'text-decoration: line-through; opacity: 0.6; width: 35%;' : 'text-decoration: none; width: 100%;'}">
+                    ${vp.oldName}
+                    ${formatted && vp.hasMarkup ? '<span class="demo-badge">Markup Detected</span>' : ''}
                 </div>
-            `);
-            await sleep(30); // Super fast split-second delay
-        }
-        
-        addTerminalLine(`<span style="color: var(--primary-blue); font-style: italic;">... 1,467 more views formatted in 0.4s</span>`);
-        await sleep(800);
-        
-        // PHASE 2: MARKUP DETECTION
-        addTerminalLine(`<span style="color: var(--text-secondary); margin-top: 8px; display: block;">[2/3] Markup Detector: Scanning for redlines...</span>`);
-        await sleep(600);
-        addTerminalLine(`<span style="color: #ffd60a;">  ⚠ Found 12 views with active markups.</span>`);
-        await sleep(400);
-        addTerminalLine(`<span style="color: #ffd60a;">  → Flagged with [HAS_MARKUPS] prefix.</span>`);
-        await sleep(800);
-        
-        // PHASE 3: DUPLICATE DETECTION
-        addTerminalLine(`<span style="color: var(--text-secondary); margin-top: 8px; display: block;">[3/3] Duplicate Detector: Analyzing coordinates...</span>`);
-        await sleep(600);
-        addTerminalLine(`<span style="color: #ff453a;">  ✖ Identified 4 duplicate viewpoints.</span>`);
-        await sleep(400);
-        addTerminalLine(`<span style="color: #ff453a;">  → Moved to [Duplicates_Archive] folder.</span>`);
-        await sleep(1000);
-        
-        // SUCCESS
-        addTerminalLine(`<span style="color: var(--success-green); font-weight: bold; margin-top: 8px; display: block;">> PIPELINE SUCCESS: 1,482 views processed in 1.42s</span>`);
-        
-        // Loop again later
-        setTimeout(runAdvancedDemoLoop, 6000);
+                ${formatted ? `<div class="demo-arrow">→</div><div class="demo-new" style="width: 55%;">${newName}</div>` : ''}
+            `;
+            demoPreviewList.appendChild(div);
+        });
     }
 
-    // Start Advanced Demo
-    setTimeout(runAdvancedDemoLoop, 500);
+    if (btnRunDemo) {
+        // Initial render unformatted
+        renderMockList(false);
+        
+        btnRunDemo.addEventListener('click', () => {
+            const originalText = btnRunDemo.innerText;
+            btnRunDemo.innerText = "Processing 8/8 Viewpoints...";
+            btnRunDemo.style.opacity = 0.8;
+            btnRunDemo.classList.remove('pulse-anim');
+            
+            setTimeout(() => {
+                renderMockList(true);
+                btnRunDemo.innerText = "Pipeline Formatted Successfully!";
+                btnRunDemo.style.background = "var(--success-green, #30d158)";
+                btnRunDemo.style.opacity = 1;
+                btnRunDemo.style.boxShadow = "0 0 20px rgba(48, 209, 88, 0.4)";
+                
+                // Reset after 6 seconds
+                setTimeout(() => {
+                    renderMockList(false);
+                    btnRunDemo.innerText = originalText;
+                    btnRunDemo.style.background = "";
+                    btnRunDemo.style.boxShadow = "";
+                    btnRunDemo.classList.add('pulse-anim');
+                }, 6000);
+            }, 800);
+        });
+    }
 
     // 3D Tilt and Flashlight Hover Effect
     document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
