@@ -63,10 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAnnual = document.getElementById('btn-annual');
     const pricePro = document.getElementById('price-pro');
     
-    // Default prices
     const prices = {
         monthly: { pro: "$9.99" },
-        annual: { pro: "$8.00" } // ~$96 / year
+        annual:  { pro: "$8.25" } // $99.00 / year = $8.25/mo
     };
 
     if (btnMonthly && btnAnnual) {
@@ -219,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // BIMetic takes ~0.1 sec per view
         const manualSecondsPerView = 25;
         const bimeticSecondsPerView = 0.1;
-        const subscriptionCost = 8; // monthly cost
+        const subscriptionCost = 9.99; // monthly cost
         
         // Time in hours
         const manualHours = (viewpoints * manualSecondsPerView) / 3600;
