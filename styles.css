@@ -947,3 +947,53 @@ input[type=range]::-webkit-slider-runnable-track {
     }
 }
 
+/* Contact Form Styles */
+.contact-form {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(0,0,0,0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 15px;
+    transition: var(--transition-smooth);
+}
+
+[data-theme="dark"] .form-control {
+    background: rgba(255,255,255,0.05);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
